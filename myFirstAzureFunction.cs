@@ -33,7 +33,7 @@ namespace azureFunctionsWithDocker
             string targetText = responseBodySerialized?.text[0];
 
             return sourceText != null && targetText != null
-                ? (ActionResult)new OkObjectResult("\"" + sourceText + "\"" + " translated to English: " + targetText)
+                ? (ActionResult)new OkObjectResult("\"" + sourceText + "\"" + " translated to English: " + targetText + "\n \n \nPowered by Yandex http://translate.yandex.com")
                 : new BadRequestObjectResult("Please pass a text on the query string or in the request body");
         }
     }
