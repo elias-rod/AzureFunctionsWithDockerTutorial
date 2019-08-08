@@ -24,9 +24,9 @@ namespace azureFunctionsWithDocker
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             sourceText = sourceText ?? data?.sourceText;
+            string APIkey = "Get a free API key at https://translate.yandex.com/developers/keys";
 
-
-            string uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190727T200316Z.786cd4031b1af802.03ef3a949ee8e7d5606311b0055193ffaee4d6cf&lang=en&text=" + sourceText;
+            string uri = "https://translate.yandex.net/api/v1.5/tr.json/translate?&key=" + key + "&lang=en&text=" + sourceText;
             HttpClient client = new HttpClient();
             string responseBody = await client.GetStringAsync(uri);
             dynamic responseBodySerialized = JsonConvert.DeserializeObject(responseBody);
